@@ -8,7 +8,8 @@ agent any
     }
     stage('Deploy'){
       steps{
-        sh 'sudo npm run start:dev'
+        sh 'sudo pm2 delete all'
+        sh 'sudo pm2 start bin/www'
       }
     }
   

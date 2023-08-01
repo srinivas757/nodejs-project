@@ -1,15 +1,14 @@
 pipeline {
-agent any 
+agent any
   stages {
     stage('Build'){
       steps{
-        sh 'sudo npm install'
+        sh 'sudo docker build -t srinivas:$BUILD_NUMBER .'
       }
     }
     stage('Deploy'){
       steps{
-        sh 'sudo pm2 delete all'
-        sh 'sudo pm2 start bin/www'
+        sh 'docker run -itd -p 3000:3000 srinivas:$BUILD_NUMBER'
       }
     }
   

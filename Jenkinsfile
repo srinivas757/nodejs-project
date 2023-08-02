@@ -8,9 +8,7 @@ agent any
     }
     stage('Deploy'){
       steps{
-        sh 'docker stop srinivas'
-        sh 'docker rm srinivas'
-        sh 'docker run -itd -p 3000:3000 --name srinivas srinivas:$BUILD_NUMBER'
+        sh 'docker run -itd -p 3000:3000 srinivas:$BUILD_NUMBER'
       }
     }
   
